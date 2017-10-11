@@ -18,7 +18,7 @@
 <body>
   <header>
       <div class="container">
-          <img src="logo-nobg.png" class="brand" alt="">
+          <img src="{{ asset('img/logo-nobg.png') }}" class="brand" alt="">
           <div class="header-nav center">
               <form action="#" class="search-form">
                   <input class="search" type="text" placeholder="Search by Keyword...">
