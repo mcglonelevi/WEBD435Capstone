@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -51,6 +53,12 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'phone' => 'required|string',
+            'addressLine1' => 'required|string',
+            'addressLine2' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'postalCode' => 'required|string',
         ]);
     }
 
@@ -62,10 +70,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = null;
+
+        $customer = Customer::create([
+          'customerName' => $data['name'],
+          'phone' => $data['phone'],
+          'addressLine1' => $data['addressLine1'],
+          'addressLine2' => $data['addressLine2'],
+          'city' => $data['city'],
+          'state' => $data['state'],
+          'postalCode' => $data['postalCode'],
+        ]);
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'customerNumber' => $customer->customerNumber,
         ]);
+
+        return $user;
     }
 }

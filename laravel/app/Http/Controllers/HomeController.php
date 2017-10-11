@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
-use App\Order;
-use App\OrderDetail;
-use App\Payment;
-use App\Product;
-use App\ProductLine;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index () {
-      $query = Order::user(363)
-        ->get()
-        ->pluck('status', 'orderNumber');
-      dd($query);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-      // This code will not run
-      return view('welcome');
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
