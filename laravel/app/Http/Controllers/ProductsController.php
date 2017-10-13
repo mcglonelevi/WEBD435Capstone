@@ -15,6 +15,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', compact('products'));
     }
 
@@ -25,7 +26,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -36,51 +37,71 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO: Form validation
+        $product = new Product($request->all());
+        $product->save();
+
+        // Redirect to show the newly created product
+        return redirect()->action('ProductsController@show', [$product]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        // Grab 3 random products from same categry (just an idea)
+        $relatedProducts = Product::where('productLine', $product->productLine)
+                                    ->inRandomOrder()
+                                    ->take(3)
+                                    ->get();
+
+        return view('products.show', compact('product', 'relatedProducts'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('products.create', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $productCode
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $productCode)
     {
-        //
+        //TODO: Form validation
+        $product = Product::findOrFail($productCode)
+                          ->first();
+        $product->update($request->all());
+        
+        return redirect()->action('ProductsController@show', [$product]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $productCode
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($productCode)
     {
-        //
+        $product = Product::findOrFail($productCode)
+                          ->first()
+                          ->delete();
+
+        return redirect()->action('ProductsController@index');
     }
 }
