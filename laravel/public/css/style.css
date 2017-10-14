@@ -97,6 +97,8 @@ input[type=text] {
     margin: auto;
     position: relative;
     height: 100%;
+    display: block;
+    clear: both;
 }
 
 .container:after {
@@ -115,4 +117,33 @@ input[type=text] {
 
 #body-content * {
   color: #000 !important;
+}
+
+.pagination {
+  display: block;
+}
+
+.pagination li {
+  float:left;
+  margin: 0 5px;
+}
+
+.product-display {
+  margin: 20px 0;
+}
+
+table.listing {
+  width: 100%;
+}
+
+.listing td {
+  position: relative;
+  width: 150px;
+}
+
+.listing td:nth-child(2) a {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }

@@ -10,7 +10,7 @@
 @else
     {!! Form::open(['action' => 'ProductsController@store', 'method' => 'post']) !!}
 @endif
-    
+
     {{ Form::label('productCode', 'Product Code') }}
     {{ Form::text('productCode', null, array('placeholder' => 'Sxx_xxxx', 'required' => 'required') ) }}
     <br><br>
@@ -18,16 +18,7 @@
     {{ Form::text('productName', null, array('placeholder' => 'Product Name', 'required' => 'required') ) }}
     <br><br>
     {{ Form::label('productLine', 'Product Line') }}
-    {{ Form::select('productLine', [
-                                    'Classic Cars'     => 'Classic Cars', 
-                                    'Motorcycles'      => 'Motorcycles',
-                                    'Planes'           => 'Planes',
-                                    'Ships'            => 'Ships',
-                                    'Trains'           => 'Trains',
-                                    'Trucks and Buses' => 'Trucks and Buses',
-                                    'Vintage Cars'     => 'Vintage Cars',
-                                    ]) 
-    }}
+    {{ Form::select('productLine', $productLines) }}
     <br><br>
     {{ Form::label('productScale', 'Product Scale') }}
     {{ Form::text('productScale', null, array('placeholder' => '1.25', 'required' => 'required') ) }}

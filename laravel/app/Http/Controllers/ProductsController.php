@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductLine;
 
 class ProductsController extends Controller
 {
@@ -14,8 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-
+        $products = Product::paginate(10);
         return view('products.index', compact('products'));
     }
 
@@ -26,7 +26,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $productLines = ProductLine::all()->pluck('productLine', 'productLine')->toArray();
+        return view('products.create', compact('productLines'));
     }
 
     /**
@@ -70,7 +71,8 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.create', compact('product'));
+        $productLines = ProductLine::all()->pluck('productLine', 'productLine')->toArray();
+        return view('products.create', compact('product', 'productLines'));
     }
 
     /**
@@ -84,7 +86,6 @@ class ProductsController extends Controller
     {
         //TODO: Form validation
         $product->update($request->all());
-        
         return redirect()->action('ProductsController@show', [$product]);
     }
 
@@ -97,7 +98,6 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
         return redirect()->action('ProductsController@index');
     }
 }

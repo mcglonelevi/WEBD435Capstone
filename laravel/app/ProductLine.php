@@ -9,6 +9,7 @@ class ProductLine extends Model
     protected $table = 'productlines';
     protected $primaryKey = 'productLine';
     public $timestamps = false;
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
