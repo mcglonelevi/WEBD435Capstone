@@ -5,3 +5,5 @@ phpunit.xml
 /Homestead.json
 /after.sh
 /aliases
+
+\.idea/

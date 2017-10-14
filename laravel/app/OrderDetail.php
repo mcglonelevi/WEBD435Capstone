@@ -35,4 +35,8 @@ class OrderDetail extends Model
       return $this->belongsTo('App\Order', 'orderNumber');
     }
 
+    function subtotal() {
+        return number_format($this->priceEach * $this->quantityOrdered, 2);
+    }
+
 }
