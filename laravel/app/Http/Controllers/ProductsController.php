@@ -77,14 +77,12 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $productCode
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $productCode)
+    public function update(Request $request, Product $product)
     {
         //TODO: Form validation
-        $product = Product::findOrFail($productCode)
-                          ->first();
         $product->update($request->all());
         
         return redirect()->action('ProductsController@show', [$product]);
@@ -93,14 +91,12 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $productCode
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($productCode)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($productCode)
-                          ->first()
-                          ->delete();
+        $product->delete();
 
         return redirect()->action('ProductsController@index');
     }
