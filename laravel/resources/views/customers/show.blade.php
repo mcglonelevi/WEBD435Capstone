@@ -55,8 +55,8 @@
               </div>
               <div class="col-sm-6 form-group"></div>
               <div class="col-sm-6 form-group">
-                  {{ Form::label('password_confirm', 'New Password Confirm') }}
-                  {{ Form::text('password_confirm', null, array('required' => 'required') ) }}
+                  {{ Form::label('password_confirmation', 'New Password Confirm') }}
+                  {{ Form::text('password_confirmation', null, array('required' => 'required') ) }}
               </div>
               <div class="col-sm-12 form-group">
                   {{ Form::submit('Update Password') }}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class CustomersController extends Controller
 {
@@ -12,9 +14,13 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::paginate(10);
+        $customers = Customer::query();
+        if ($request->input('search')) {
+            $customers = $customers->where('customerName', 'like', '%' . $request->input('search') . '%');
+        }
+        $customers = $customers->paginate(10);
         return view('customers.index', compact('customers'));
     }
 
@@ -89,7 +95,19 @@ class CustomersController extends Controller
         return redirect()->action('CustomersController@index');
     }
 
-    public function changePassword(Customer $customer) {
-        //
+    public function changePassword(Request $request, Customer $customer) {
+      $user = $customer->user;
+      if (!$user) {
+        throw new Exception('no user associated with customer');
+      }
+      if (!Hash::check($request->input('currentPassword'), $user->password)) {
+        throw new Exception('wrong password');
+      }
+      $request->validate([
+        'password' => 'required|confirmed',
+      ]);
+      $user->password = Hash::make($request->input('password'));
+      $user->save();
+      return redirect()->action('CustomersController@show', [$customer]);
     }
 }

@@ -6,6 +6,16 @@
     <div class="container">
         {{ $customers->links() }}
     </div>
+    <div class="container">
+        {!! Form::open(['route' => 'customers.index', 'method' => 'get']) !!}
+            <div class="grid">
+              <div class="col-sm-12 form-group">
+                  {{ Form::text('search', null, array('required' => 'required') ) }}
+                  {{ Form::submit('Search Customers') }}
+              </div>
+          </div>
+        {!! Form::close() !!}
+    </div>
     <div class="container product-display">
       <table class="listing">
         @foreach($customers as $c)

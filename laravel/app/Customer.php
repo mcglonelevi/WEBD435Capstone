@@ -45,7 +45,7 @@ class Customer extends Model
       return $this->hasMany('App\Payment', 'customerNumber');
     }
 
-    function customer() {
+    function user() {
       return $this->hasOne('App\User', 'customerNumber');
     }
 }
