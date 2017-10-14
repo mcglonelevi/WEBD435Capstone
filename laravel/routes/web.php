@@ -13,6 +13,11 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('products', 'ProductsController');
 
+Route::resource('products', 'ProductsController');
+Route::put('/customers/{customer}/changePassword', [
+  'uses' => 'CustomersController@changePassword',
+  'as' => 'customers.changePassword'
+]);
+Route::resource('customers', 'CustomersController');
 Auth::routes();

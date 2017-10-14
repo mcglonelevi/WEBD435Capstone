@@ -38,6 +38,12 @@ class Order extends Model
       return $this->hasMany('App\OrderDetail', 'orderNumber');
     }
 
+    function getTotal() {
+      return $this->orderDetails->reduce(function ($carry, $item) {
+          return $carry + ($item->priceEach * $item->quantityOrdered);
+      }, 0);
+    }
+
     public function scopeUser($query, $customerId)
     {
         return $query->where('customerNumber', $customerId);

@@ -147,3 +147,16 @@ table.listing {
   left: 0;
   transform: translateY(-50%);
 }
+
+label, input[type=text] {
+  display: block;
+}
+
+input[type=text] {
+  width: 100%;
+}
+
+.form-group {
+  padding: 0 10px;
+  margin: 5px 0;
+}
