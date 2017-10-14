@@ -42,7 +42,7 @@
                                 {{ $o->orderDate }}
                             </td>
                             <td>
-
+                                {{ $o->getTotal() }}
                             </td>
                             <td>
                                 <a href="{{ url('/orders/' . $o->orderNumber) }}">Edit</a>

@@ -13,12 +13,15 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- REMOVE INLINE STYLES -->s
+                <tbody style="text-align: center;">
                     @foreach ($order->orderDetails as $detail)
                         <tr>
                             <td>{{ $detail->product->productName }}</td>
                             <td>{{ $detail->quantityOrdered }}</td>
-                            <td>{{ $detail->product->MSRP }}</td>
+                            <td>{{ $detail->priceEach }}</td>
+                            <td>{{ $detail->subtotal() }}</td>
+                            <td><a href="">Save</a>&nbsp;<a href="">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>
