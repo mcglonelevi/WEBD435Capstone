@@ -6,6 +6,14 @@
     <div class="container">
         {{ $products->links() }}
     </div>
+    {!! Form::open(['route' => 'products.index', 'method' => 'get']) !!}
+        <div class="grid">
+          <div class="col-sm-12 form-group">
+              {{ Form::text('search', null, array('required' => 'required') ) }}
+              {{ Form::submit('Search Products') }}
+          </div>
+      </div>
+    {!! Form::close() !!}
     <div class="container product-display">
       <table class="listing">
         @foreach($products as $p)

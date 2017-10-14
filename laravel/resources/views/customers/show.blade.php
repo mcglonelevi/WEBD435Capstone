@@ -72,18 +72,28 @@
     @endif
 
     <h1>Recent Order History</h1>
+    <br>
       <div class="grid">
         <div class="col-sm-12">
-          <table class="listing">
             @foreach ($customer->orders as $o)
-              <tr>
-                <td>{{$o->orderDate}}</td>
-                <td>{{$o->orderNumber}}</td>
-                <td>${{$o->getTotal()}}</td>
-                <td>{{$o->status}}</td>
-              </tr>
+            <div>
+              <h1>{{$o->orderDate}} -
+              {{$o->orderNumber}} -
+              ${{$o->getTotal()}} -
+              {{$o->status}}
+              </h1>
+            </div>
+              @foreach($o->orderdetails as $orderd)
+              <table class="listing">
+                <tr>
+                  <td>{{$orderd->product->productName}}</td>
+                  <td>{{$orderd->quantityOrdered}}</td>
+                  <td>${{$orderd->priceEach}}</td>
+                </tr>
+              </table>
+              @endforeach
+              <br />
             @endforeach
-          </table>
         </div>
       </div>
 </div>

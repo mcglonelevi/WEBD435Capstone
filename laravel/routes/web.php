@@ -21,5 +21,5 @@ Route::put('/customers/{customer}/changePassword', [
 Route::resource('customers', 'CustomersController');
 Route::resource('products', 'ProductsController');
 Route::resource('orders', 'OrdersController');
-Route::resource('orders.orderdetails', 'OrderDetailsController');
+Route::resource('orders.orderdetails', 'OrderdetailsController');
 Auth::routes();

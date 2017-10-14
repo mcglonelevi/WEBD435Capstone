@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
+use App\OrderDetail;
+use App\Product;
+use Exception;
 
-class OrderDetailsController extends Controller
+class OrderdetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,7 @@ class OrderDetailsController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -23,7 +27,7 @@ class OrderDetailsController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -32,9 +36,20 @@ class OrderDetailsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Order $order)
     {
-        //
+        $product = Product::where('productCode', $request->input('productCode'))->first();
+        if (!$product) {
+            throw new Exception('Product with this code is not found.');
+        }
+        $orderDetail = new OrderDetail();
+        $orderDetail->orderNumber = $order->orderNumber;
+        $orderDetail->productCode = $product->productCode;
+        $orderDetail->priceEach = $product->buyPrice;
+        $orderDetail->quantityOrdered = $request->input('quantity');
+        $orderDetail->orderLineNumber = 1;
+        $orderDetail->save();
+        return redirect()->action('OrdersController@show', [$order]);
     }
 
     /**
@@ -45,7 +60,7 @@ class OrderDetailsController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -56,7 +71,7 @@ class OrderDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -66,9 +81,11 @@ class OrderDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order, OrderDetail $orderDetail)
     {
-        //
+        $orderDetail->fill($request->all());
+        $orderDetail->save();
+        return redirect()->action('OrdersController@show', [$order]);
     }
 
     /**
@@ -77,8 +94,9 @@ class OrderDetailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order, OrderDetail $orderDetail)
     {
-        //
+        $orderDetail->delete();
+        return redirect()->action('OrdersController@show', [$order]);
     }
 }

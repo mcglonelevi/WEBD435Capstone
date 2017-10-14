@@ -10,6 +10,13 @@ class Order extends Model
     protected $table = 'orders';
     public $timestamps = false;
 
+    public static $STATUS_SHIPPED = 'Shipped';
+    public static $STATUS_RESOLVED = 'Resolved';
+    public static $STATUS_CANCELLED = 'Cancelled';
+    public static $STATUS_ONHOLD = 'On Hold';
+    public static $STATUS_DISPUTED = 'Disputed';
+    public static $STATUS_INPROCESS = 'In Process';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,5 +54,17 @@ class Order extends Model
     public function scopeUser($query, $customerId)
     {
         return $query->where('customerNumber', $customerId);
+    }
+
+    public function getStatuses()
+    {
+      return [
+        self::$STATUS_SHIPPED => self::$STATUS_SHIPPED,
+        self::$STATUS_RESOLVED => self::$STATUS_RESOLVED,
+        self::$STATUS_ONHOLD => self::$STATUS_ONHOLD,
+        self::$STATUS_DISPUTED => self::$STATUS_DISPUTED,
+        self::$STATUS_INPROCESS => self::$STATUS_INPROCESS,
+        self::$STATUS_CANCELLED => self::$STATUS_CANCELLED
+      ];
     }
 }
