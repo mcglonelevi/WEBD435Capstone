@@ -115,19 +115,6 @@ input[type=text] {
     float: right !important;
 }
 
-#body-content * {
-  color: #000 !important;
-}
-
-.pagination {
-  display: block;
-}
-
-.pagination li {
-  float:left;
-  margin: 0 5px;
-}
-
 .product-display {
   margin: 20px 0;
 }

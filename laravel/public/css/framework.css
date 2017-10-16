@@ -1,0 +1,280 @@
+/*
+ * Table styles
+ */
+.table {
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+}
+.table th {
+    font-weight: 600;
+}
+.table th, .table td {
+    padding: 0.5rem;
+    max-width: 100%;
+    white-space: nowrap;
+}
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dddddd;
+}
+.table-hover tbody tr:hover {
+    background-color: #ddd !important;
+}
+
+
+/*
+ * Button styles
+ */
+.btn {
+    padding: 10px 17px 10px 17px;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.95rem;
+}
+.btn-sm {
+    padding: 4px 8px 4px 8px !important;
+    font-size: 0.8rem !important;
+}
+.btn:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+}
+.btn-success {
+    background-color: #169e11;
+    color: white;    
+}
+.btn-danger {
+    background-color: #c61d0d;
+    color: white;
+}
+
+
+/*
+ * Panel Styles
+ */
+ .panel {
+    border: 1px solid #dddddd;
+    max-width: 100%;
+    border-radius: 2px;
+    box-shadow: 1px 1px #f2f2f2;
+ }
+ .panel-heading {
+    padding: 10px 0 10px 15px;
+ }
+ .panel-body {
+    padding: 15px 0 15px 15px !important;
+ }
+ .panel-heading {
+    border-bottom: 1px solid #dddddd;
+    background-color: #f2f2f2;
+    font-size: 1.2rem;
+    font-weight: 300;
+ }
+ .panel-primary .panel-heading {
+    background-color: #063760;
+    color: white;
+ }
+
+
+/*
+ * Tooltip
+ */
+ .tooltip {
+    position: relative;
+    display: inline-block;
+ }
+.tooltip-text {
+    visibility: hidden;
+    background-color: transparent;
+    border-color: transparent;
+    position: absolute;
+    top: -2em;
+    left: -1.2em;
+    color: #fff;
+    text-align: center;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    /*transition: background-color 0.15s ease-in;*/
+}
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    background-color: rgba(0,0,0,0.6);
+}
+/* Tooltip arrow */
+.tooltip .tooltip-text::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+}
+
+
+/*
+ * Modal styles
+ */
+ @keyframes slide {
+    from {top: -50%;}
+    to {top: 15%;}
+ }
+ .modal {
+    display: none;
+ }
+ .modal-header {
+    padding: 20px 0 15px 20px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #dddddd;
+ }
+ .modal-body {
+    padding: 15px 0 15px 20px;
+ }
+ .modal-open {
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vw;
+    height: 60vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: white;
+    z-index: 999;
+    -webkit-animation: slide 0.25s forwards;
+ }
+ /*
+  * Styles for "X" close anchor link on modals
+  */
+ a.close-modal {
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    float: right;
+    margin-right: 1rem;
+    margin-top: -0.75rem;
+    cursor: pointer;
+    color: #7a7a7a;
+    transition: color 0.15s linear;
+ }
+ a.close-modal:hover {
+    color: black;
+ }
+ /*
+  * Overlay to gray out page content when modal open
+  */
+ #page-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.6);
+ }
+
+
+ /*
+  * Alert styles
+  */ 
+  .alert {
+    border-radius: 3px;
+    font-size: 1rem;
+    padding: 20px 0 20px 20px;
+  }
+  .alert strong, .alert b {
+    font-weight: 800;
+  }
+  .alert-success {
+    background-color: #169e11;
+    color: #fff;
+  }
+  .alert-danger {
+    background-color: #c61d0d;
+    color: #fff;
+  }
+  a.close-alert {
+    background-color: transparent;
+    font-size: 2em;
+    font-weight: 900;
+    margin-right: 1.25rem;
+    margin-top: -0.25rem;
+    border: none;
+    cursor: pointer;
+    color: #d6d6d6;
+    float: right;
+  }
+  a.close-alert:hover {
+    color: #ffffff;
+  }
+
+
+/*
+* Pagination Styles
+*/
+.pagination li {
+    display: inline-block;
+    float: left; /* This might need removed */
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #2196f3;
+    border: 1px solid #ddd;
+}
+.pagination li a:hover {
+    background-color: #ededed;
+}
+.pagination li:nth-child(1n + 2) {
+    border-left: none;
+}
+.pagination a {
+    text-decoration: none;
+    color: #2196f3 !important;
+    display: block;
+    padding: 5px 10px 5px 10px;
+}
+.pagination span {
+    cursor: not-allowed;
+    display: block;
+    padding: 5px 10px 5px 10px;
+}
+.pagination .active {
+    background-color: #2196f3;
+    color: #fff;
+    border: 1px solid #2196f3;
+}
+
+
+/*
+#body-content .pagination li {
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #2196f3;
+}
+#body-content .pagination li a:hover {
+    background-color: #ededed;
+}
+
+#body-content .pagination a {
+    text-decoration: none;
+    color: #2196f3 !important;
+    display: block;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #ddd;
+}
+#body-content .pagination li:nth-child(1n + 2) a {
+    border-left: none;
+}
+#body-content .pagination span {
+    cursor: not-allowed;
+    display: block;
+    padding: 5px 10px 5px 10px;
+}
+#body-content .pgination .active span {
+    background-color: #2196f3;
+    color: #fff !important;
+    border: 1px solid #2196f3;
+}
+*/
