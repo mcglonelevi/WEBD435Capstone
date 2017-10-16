@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/grid.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/framework.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -68,5 +69,7 @@
           </div>
       </div>
   </footer>
+
+  <script src="{{ asset('js/framework.js') }}"></script>
 </body>
 </html>
