@@ -10,15 +10,12 @@ header {
     margin-bottom: 20px;
 }
 
-header .container {
-    padding-top: 45px !important;
-}
-
 footer {
     height: 170px;
     width: 100%;
     background: #063760;
     padding: 45px;
+    margin-top: 20px;
 }
 
 footer ul {
@@ -146,4 +143,26 @@ input[type=text] {
 .form-group {
   padding: 0 10px;
   margin: 5px 0;
+}
+
+p, label, input, .btn, a, span, strong, div {
+  color: #000;
+}
+
+.help-block {
+  margin: 20px 0;
+}
+
+.right {
+  float:right;
+  text-align: right;
+}
+
+.login label.right {
+  padding-right: 15px;
+}
+
+body, html {
+  font-family: 'Arial';
+  color: #000;
 }

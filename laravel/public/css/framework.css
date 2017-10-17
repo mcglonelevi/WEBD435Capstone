@@ -32,6 +32,7 @@
     border-radius: 5px;
     border: none;
     font-size: 0.95rem;
+    background-color: #69BCE7;
 }
 .btn-sm {
     padding: 4px 8px 4px 8px !important;
@@ -43,7 +44,7 @@
 }
 .btn-success {
     background-color: #169e11;
-    color: white;    
+    color: white;
 }
 .btn-danger {
     background-color: #c61d0d;
@@ -178,7 +179,7 @@
 
  /*
   * Alert styles
-  */ 
+  */
   .alert {
     border-radius: 3px;
     font-size: 1rem;
