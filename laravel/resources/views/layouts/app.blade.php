@@ -18,38 +18,34 @@
 </head>
 <body>
   <header>
-      <div class="container">
-          <img src="{{ asset('img/logo-nobg.png') }}" class="brand" alt="">
-          <div class="header-nav center">
-              <form action="#" class="search-form">
-                  <input class="search" type="text" placeholder="Search by Keyword...">
-                  <input type="submit" value="Search">
-              </form>
-          </div>
-          <div class="header-nav right">
-              <ul>
-                @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+    <div class="container">
+      <img src="{{ asset('img/logo-nobg.png') }}" height="60" alt="">
+      <ul class="right">
+        @guest
+            <li><a href="{{ route('login') }}">Login</a></li>
+            <li><a href="{{ route('register') }}">Register</a></li>
+        @else
+            <li>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-                @endguest
-              </ul>
-          </div>
-      </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+        @endguest
+      </ul>
+      <form action="/products" class="search-form">
+          <input name="search" id="search" class="search" type="text" placeholder="Search by Keyword...">
+          <input type="submit" value="Search">
+      </form>
+    </div>
   </header>
   <div id="body-content">
     @yield('content')
