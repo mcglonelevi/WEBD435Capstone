@@ -70,10 +70,6 @@ input[type=text] {
   margin: 5px 0;
 }
 
-p, label, input, .btn, a, span, strong, div {
-  color: #000;
-}
-
 .help-block {
   margin: 20px 0;
 }
@@ -90,4 +86,15 @@ p, label, input, .btn, a, span, strong, div {
 body, html {
   font-family: 'Arial';
   color: #000;
+}
+
+p, label, input, .btn, a, span, strong, div, td, th, h1, h2 {
+  color: #000;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
 }

@@ -3,16 +3,18 @@
 @section('content')
     <div class="container">
         <h1>Order Details</h1>
+        <br>
             <div class="container">
-              <h1>Set Status</h1>
+              <h2>Set Order Status</h2>
               {!! Form::open(['url' => route('orders.update', [
               $order->orderNumber
             ]), 'method' => 'put']) !!}
-              {!! Form::select('status', $order->getStatuses(), $order->status) !!}
-              {!! Form::submit('Save Status') !!}
+              {!! Form::select('status', $order->getStatuses(), $order->status, array('class' => 'form-control') ) !!}
+              {!! Form::submit('Save Status', array('class' => 'btn btn-success btn-md')) !!}
               {!! Form::close() !!}
             </div>
-            <table class="listing">
+            <br>
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -22,8 +24,7 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <!-- REMOVE INLINE STYLES -->
-                <tbody style="text-align: center;">
+                <tbody>
                     @foreach ($order->orderDetails as $detail)
                         <tr>
                             <td>{{ $detail->product->productName }}</td>
@@ -36,8 +37,8 @@
                               ]), 'method' => 'put'])
                               !!}
 
-                              {!! Form::number('quantityOrdered', $detail->quantityOrdered) !!}
-                              {!! Form::submit('Save') !!}
+                              {!! Form::number('quantityOrdered', $detail->quantityOrdered, array('min' => '0') ) !!}
+                              {!! Form::submit('Save', array('class' => 'btn btn-success btn-sm')) !!}
 
                               {!! Form::close() !!}
                             </td>
@@ -52,7 +53,7 @@
                               ]), 'method' => 'delete'])
                               !!}
 
-                              {!! Form::submit('Delete') !!}
+                              {!! Form::submit('Delete', array('class' => 'btn btn-danger btn-sm')) !!}
 
                               {!! Form::close() !!}
                             </td>
@@ -60,23 +61,36 @@
                     @endforeach
                 </tbody>
             </table>
-
-            <h1>Total Price: ${{$order->getTotal()}}</h1>
-
-            <h1>Add Item to Order</h1>
-            {!!
-              Form::open(
-              ['url' => route('orders.orderdetails.store', [
-              $order->orderNumber
-            ]), 'method' => 'post'])
-            !!}
-
-            {!! Form::label('productCode', 'Product ID') !!}
-            {!! Form::text('productCode', '') !!}
-            {!! Form::label('quantity', 'Quantity') !!}
-            {!! Form::number('quantity', 1) !!}
-            {!! Form::submit('Add to Order') !!}
-
+            
+            <h2>Total Price: ${{$order->getTotal()}}</h2>
+            <br>
+            <br>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Add Product to Order
+              </div>
+              <div class="panel-body">
+                {!!
+                  Form::open(
+                  ['url' => route('orders.orderdetails.store', [
+                  $order->orderNumber
+                ]), 'method' => 'post'])
+                !!}
+                <div class="form-group">
+                  {!! Form::label('productCode', 'Product ID', array('class' => 'control-label') ) !!}
+                  {!! Form::text('productCode', '', array('class' => 'form-control')) !!}
+                </div>
+                <div class="form-group">
+                  {!! Form::label('quantity', 'Quantity', array('class' => 'control-label') ) !!}
+                  {!! Form::number('quantity', 1, array('class' => 'form-control', 'min' => '0') ) !!}
+                  &emsp;<!-- Add a little space between button/input -->
+                  {!! Form::submit('Add to Order', array('class' => 'btn btn-success btn-md')) !!}
+                </div>
+                <div class="form-group">
+                  
+                </div>
+              </div>
+            </div>
             {!! Form::close() !!}
     </div>
 

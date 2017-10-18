@@ -49,7 +49,7 @@
                                 <label class="col-sm-6">
                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                 </label>
-                                <a class="col-sm-6 right" href="{{ route('password.request') }}">
+                                <a class="col-sm-6 right text-primary" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>
@@ -58,9 +58,16 @@
                         <div class="form-group">
                             <div class="grid">
                                 <div class="col-sm-2"></div>
-                                <button type="submit" class="col-sm-10 btn">
+                                <button type="submit" class="col-sm-10 btn btn-primary">
                                     Sign In
                                 </button>
+                            </div>
+                        </div>
+                        <div class="center-text grid">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                Don't have an account? 
+                                <a href="{{ url('/register') }}" class="text-primary">Register</a>
                             </div>
                         </div>
                     </form>

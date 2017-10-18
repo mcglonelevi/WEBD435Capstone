@@ -4,12 +4,14 @@
 .table {
     max-width: 100%;
     margin-bottom: 0.5rem;
+    width: 100%;
 }
 .table th {
     font-weight: 600;
+    text-align: left;
 }
 .table th, .table td {
-    padding: 0.5rem;
+    padding: 0.3rem;
     max-width: 100%;
     white-space: nowrap;
 }
@@ -32,11 +34,14 @@
     border-radius: 5px;
     border: none;
     font-size: 0.95rem;
-    background-color: #69BCE7;
 }
 .btn-sm {
-    padding: 4px 8px 4px 8px !important;
-    font-size: 0.8rem !important;
+    padding: 3px 7px 3px 7px !important;
+    font-size: 0.7rem !important;
+}
+.btn-md {
+    padding: 7px 11px 7px 11px !important;
+    font-size: 0.9rem !important;
 }
 .btn:hover {
     filter: brightness(85%);
@@ -44,11 +49,15 @@
 }
 .btn-success {
     background-color: #169e11;
-    color: white;
+    color: #fff !important;
 }
 .btn-danger {
     background-color: #c61d0d;
-    color: white;
+    color: #fff !important;
+}
+.btn-primary {
+    background-color: #69BCE7;
+    color: #fff !important;
 }
 
 
@@ -217,7 +226,7 @@
 */
 .pagination li {
     display: inline-block;
-    float: left; /* This might need removed */
+    float: left;
     font-size: 1.2rem;
     background-color: #fff;
     color: #2196f3;
@@ -231,7 +240,7 @@
 }
 .pagination a {
     text-decoration: none;
-    color: #2196f3 !important;
+    color: #2196f3;
     display: block;
     padding: 5px 10px 5px 10px;
 }
@@ -239,43 +248,53 @@
     cursor: not-allowed;
     display: block;
     padding: 5px 10px 5px 10px;
+    color: #2196f3;
 }
-.pagination .active {
+.pagination .active span {
     background-color: #2196f3;
     color: #fff;
-    border: 1px solid #2196f3;
+}
+.pagination li.active {
+    border-color: #2196f3;
 }
 
 
 /*
-#body-content .pagination li {
-    display: inline-block;
-    font-size: 1.2rem;
-    background-color: #fff;
-    color: #2196f3;
+ * Forms
+ */
+ div.form-group {
+
+ }
+ form.form-horizontal div.form-group {
+    padding-bottom: 10px;
+ }
+input[type="email"].form-control, input[type="password"].form-control, 
+input[type="text"].form-control, input[type="number"].form-control {
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid #a0a0a0;
+    border-radius: 2px;
 }
-#body-content .pagination li a:hover {
-    background-color: #ededed;
+input[type="number"].form-control {
+    padding-left: 3px;
+}
+select.form-control {
+    height: 30px;
+    color: #000;
+    font-size: 14px;
+}
+.form-control option {
+    color: #000;
+}
+label.control-label {
+    padding-top: 8px;
+    padding-bottom: 3px;
 }
 
-#body-content .pagination a {
-    text-decoration: none;
-    color: #2196f3 !important;
-    display: block;
-    padding: 5px 10px 5px 10px;
-    border: 1px solid #ddd;
+
+/*
+ * Generic helper classes
+ */
+.text-primary {
+    color: #063760;
 }
-#body-content .pagination li:nth-child(1n + 2) a {
-    border-left: none;
-}
-#body-content .pagination span {
-    cursor: not-allowed;
-    display: block;
-    padding: 5px 10px 5px 10px;
-}
-#body-content .pgination .active span {
-    background-color: #2196f3;
-    color: #fff !important;
-    border: 1px solid #2196f3;
-}
-*/
