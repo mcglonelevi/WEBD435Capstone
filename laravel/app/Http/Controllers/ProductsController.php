@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductLine;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -44,7 +45,10 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //TODO: Form validation
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public');
+            $product->image_url = 'uploads/' . $path;
+        }
         $product = new Product($request->all());
         $product->save();
 
@@ -90,7 +94,10 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //TODO: Form validation
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public');
+            $product->image_url = 'uploads/' . $path;
+        }
         $product->update($request->all());
         return redirect()->action('ProductsController@show', [$product]);
     }
