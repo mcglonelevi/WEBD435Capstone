@@ -8,6 +8,11 @@ use App\OrderDetail;
 
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
