@@ -19,7 +19,11 @@
         @foreach($products as $p)
           <tr>
               <td>
-                <img src="http://via.placeholder.com/50x50" alt="">
+                @if (!$p->image_url)
+                    <img src="http://via.placeholder.com/50x50" alt="">
+                @else
+                    <img src="{{ asset($p->image_url) }}" width="50" alt="">
+                @endif
               </td>
               <td>
                 <a href="{{ url('/products/' . $p->productCode) }}">{{$p->productName}}</a>

@@ -7,7 +7,11 @@
 <div class="grid container">
     <div class="col-sm-1"></div> <!-- Spacing -->
     <div class="col-sm-4">
-        <img src="http://via.placeholder.com/350x300" alt="placeholder">
+        @if (!$product->image_url)
+            <img src="http://via.placeholder.com/300x300" alt="">
+        @else
+            <img src="{{ asset($product->image_url) }}" width="300" alt="">
+        @endif
     </div>
     <div class="col-sm-6">
         <h1 style="font-size: 200%; padding: 20px 20px 20px 0; font-weight: 500;">{{ $product->productName }}</h1>
