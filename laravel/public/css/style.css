@@ -3,8 +3,8 @@
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
+    color: #4286f4;
+    text-decoration: underline;
 }
 
 input[type=text] {
@@ -88,7 +88,7 @@ body, html {
   color: #000;
 }
 
-p, label, input, .btn, a, span, strong, div, td, th, h1, h2 {
+p, label, input, .btn, span, strong, div, td, th, h1, h2 {
   color: #000;
 }
 
@@ -97,4 +97,9 @@ h1 {
 }
 h2 {
   font-size: 1.5em;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

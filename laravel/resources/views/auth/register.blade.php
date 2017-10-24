@@ -93,7 +93,7 @@
                             <label for="addressLine2" class="col-md-4 control-label">Address Line 2</label>
 
                             <div class="col-md-6">
-                                <input id="addressLine2" type="text" class="form-control" name="addressLine2" value="{{ old('addressLine2') }}" required>
+                                <input id="addressLine2" type="text" class="form-control" name="addressLine2" value="{{ old('addressLine2') }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
