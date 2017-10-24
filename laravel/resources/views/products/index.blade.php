@@ -29,7 +29,16 @@
                 <a href="{{ url('/products/' . $p->productCode) }}">{{$p->productName}}</a>
               </td>
               <td>
-                <a href="{{ url('/products/' . $p->productCode . '/addtocart') }}">Add to Cart</a>
+                {!! Form::open(['url' => url('/products/' . $p->productCode . '/addtocart'), 'method' => 'get']); !!}
+                    {!! Form::label('qty', 'Quantity:') !!}
+                    <div>
+                      {!! Form::text('text', '1', [
+                        'name' => 'qty',
+                        'style' => 'width: 150px; float: left; margin-right: 20px;',
+                      ]); !!}
+                      {!! Form::submit('Add to Cart', ['class' => 'btn btn-success btn-sm']); !!}
+                    </div>
+                {!! Form::close(); !!}
               </td>
           </tr>
         @endforeach

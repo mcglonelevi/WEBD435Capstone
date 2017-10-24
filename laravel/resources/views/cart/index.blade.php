@@ -4,7 +4,8 @@
 <div class="container">
     <h1>Products</h1>
     <div class="container product-display">
-      <table class="listing">
+      @if (count($products) > 0)
+      <table class="cart-table">
         <thead>
           <tr>
             <th>Image</th>
@@ -30,18 +31,35 @@
                 <td>
                   {{ $p['product']->buyPrice }}
                 </td>
-                <td>
-                  <input type="text" value="{{ $p['qty'] }}">
+                <td class="update-qty">
+                  <div style="width: 170px; display: inline-block;">
+                    {!! Form::open(['url' => url('/products/' . $p['product']->productCode . '/addtocart'), 'method' => 'get']); !!}
+                        {!! Form::text('text', $p['qty'], [
+                          'name' => 'qty',
+                          'style' => 'width: 100px; float: left;'
+                        ]); !!}
+                        {!! Form::submit('Update', ['class' => 'btn btn-success btn-sm']); !!}
+                    {!! Form::close(); !!}
+                  </div>
                 </td>
                 <td>
-                  <a href="{{ url('/products/' . $p['product']->productCode . '/removefromcart') }}">Remove from Cart</a>
+                  <a class="btn btn-danger" href="{{ url('/products/' . $p['product']->productCode . '/removefromcart') }}">Remove from Cart</a>
                 </td>
             </tr>
           @endforeach
         </tbody>
       </table>
-      Subtotal: ${{number_format($subtotal, 2)}}
-      <a href="/cart/create">Checkout</a>
+      <div>
+          Subtotal: ${{number_format($subtotal, 2)}}
+      </div>
+      <div class="grid">
+          <a href="/cart/create" class="btn btn-success">Checkout</a>
+      </div>
+      @else
+        <div class="col-sm-12">
+            There are no items in your shopping cart.
+        </div>
+      @endif
     </div>
 </div>
 @endsection
