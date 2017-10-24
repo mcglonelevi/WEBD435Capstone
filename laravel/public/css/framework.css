@@ -5,15 +5,17 @@
     max-width: 100%;
     margin-bottom: 0.5rem;
     width: 100%;
+    table-layout: fixed;
 }
 .table th {
     font-weight: 600;
-    text-align: left;
 }
 .table th, .table td {
     padding: 0.3rem;
     max-width: 100%;
     white-space: nowrap;
+    vertical-align: middle;
+    text-align: left;
 }
 .table-striped tbody tr:nth-child(odd) {
     background-color: #f2f2f2;
@@ -34,6 +36,7 @@
     border-radius: 5px;
     border: none;
     font-size: 0.95rem;
+    text-decoration: none;
 }
 .btn-sm {
     padding: 3px 7px 3px 7px !important;
@@ -289,6 +292,10 @@ select.form-control {
 label.control-label {
     padding-top: 8px;
     padding-bottom: 3px;
+}
+.form-inline {
+    display: inline;
+    margin: 5px;
 }
 
 

@@ -67,15 +67,16 @@ class ProductsController extends Controller
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
+        $user = $request->user();
         // Grab 3 random products from same categry (just an idea)
         $relatedProducts = Product::where('productLine', $product->productLine)
                                     ->inRandomOrder()
-                                    ->take(3)
+                                    ->take(4)
                                     ->get();
 
-        return view('products.show', compact('product', 'relatedProducts'));
+        return view('products.show', compact('product', 'relatedProducts', 'user'));
     }
 
     /**

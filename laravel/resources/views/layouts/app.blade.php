@@ -21,7 +21,9 @@
 <body>
   <header>
     <div class="container">
-      <img src="{{ asset('img/logo-nobg.png') }}" height="60" alt="">
+      <a href="{{ url('/') }}">
+        <img src="{{ asset('img/logo-nobg.png') }}" height="60" alt="Lugnutz logo">
+      </a>
       <ul class="right">
         @guest
             <li><a href="{{ route('login') }}">Login</a></li>
@@ -38,9 +40,11 @@
                     {{ csrf_field() }}
                 </form>
             </li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+            <li>
+              <a href="{{ url('/customers/' . Auth::user()->customerNumber) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
+            </li>
         @endguest
       </ul>
       <form action="/products" class="search-form">

@@ -11,7 +11,7 @@ class CustomersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->only(['index', 'create', 'store', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -57,9 +57,12 @@ class CustomersController extends Controller
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Request $request, Customer $customer)
     {
-      return view('customers.show', compact('customer'));
+        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+            return view('customers.show', compact('customer'));
+        }
+        abort(403, 'You do not have access to this page');
     }
 
     /**
@@ -68,9 +71,12 @@ class CustomersController extends Controller
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Request $request, Customer $customer)
     {
-        return view('customers.create', compact('customer'));
+        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+            return view('customers.create', compact('customer'));
+        }
+        abort(403, 'You do not have access for this operation');
     }
 
     /**
@@ -83,8 +89,11 @@ class CustomersController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //TODO: Form validation
-        $customer->update($request->all());
-        return redirect()->action('CustomersController@show', [$customer]);
+        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+            $customer->update($request->all());
+            return redirect()->action('CustomersController@show', [$customer]);
+        }
+        abort(403, 'You do not have access for this operation');
     }
 
     /**
@@ -100,18 +109,22 @@ class CustomersController extends Controller
     }
 
     public function changePassword(Request $request, Customer $customer) {
-      $user = $customer->user;
-      if (!$user) {
-        throw new Exception('no user associated with customer');
-      }
-      if (!Hash::check($request->input('currentPassword'), $user->password)) {
-        throw new Exception('wrong password');
-      }
-      $request->validate([
-        'password' => 'required|confirmed',
-      ]);
-      $user->password = Hash::make($request->input('password'));
-      $user->save();
-      return redirect()->action('CustomersController@show', [$customer]);
+        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+            $user = $customer->user;
+            if (!$user) {
+            throw new Exception('no user associated with customer');
+            }
+            if (!Hash::check($request->input('currentPassword'), $user->password)) {
+            throw new Exception('wrong password');
+            }
+            $request->validate([
+            'password' => 'required|confirmed',
+            ]);
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+            return redirect()->action('CustomersController@show', [$customer]);
+        }
+        abort(403, 'You do not have access for this operation');
     }
+
 }

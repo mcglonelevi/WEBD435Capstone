@@ -22,7 +22,7 @@
           </div>
           <div class="col-sm-6 form-group">
               {{ Form::label('addressLine2', 'Address Line 2') }}
-              {{ Form::text('addressLine2', null, array('placeholder' => 'Address Line 2', 'required' => 'required') ) }}
+              {{ Form::text('addressLine2', null, array('placeholder' => 'Address Line 2') ) }}
           </div>
           <div class="col-sm-6 form-group">
               {{ Form::label('city', 'City') }}
@@ -37,7 +37,7 @@
               {{ Form::text('postalCode', null, array('placeholder' => 'Postal Code', 'required' => 'required') ) }}
           </div>
           <div class="col-sm-12 form-group">
-              {{ Form::submit('Update Customer') }}
+              {{ Form::submit('Update Customer', array('class' => 'btn btn-success')) }}
           </div>
       </div>
     {!! Form::close() !!}
@@ -77,21 +77,22 @@
         <div class="col-sm-12">
             @foreach ($customer->orders as $o)
             <div>
-              <h1>{{$o->orderDate}} -
-              {{$o->orderNumber}} -
-              ${{$o->getTotal()}} -
-              {{$o->status}}
-              </h1>
+              <h2>
+                {{$o->orderDate}} -
+                #{{$o->orderNumber}} -
+                ${{$o->getTotal()}} -
+                {{$o->status}}
+              </h2>
             </div>
+            <table class="table table-striped table-hover">
               @foreach($o->orderdetails as $orderd)
-              <table class="listing">
                 <tr>
                   <td>{{$orderd->product->productName}}</td>
                   <td>{{$orderd->quantityOrdered}}</td>
                   <td>${{$orderd->priceEach}}</td>
                 </tr>
-              </table>
               @endforeach
+              </table>
               <br />
             @endforeach
         </div>
