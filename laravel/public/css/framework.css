@@ -305,3 +305,7 @@ label.control-label {
 .text-primary {
     color: #063760;
 }
+
+.img-responsive {
+    max-width: 100%;
+}
