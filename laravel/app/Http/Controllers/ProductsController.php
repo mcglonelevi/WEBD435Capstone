@@ -67,15 +67,16 @@ class ProductsController extends Controller
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
+        $user = $request->user();
         // Grab 3 random products from same categry (just an idea)
         $relatedProducts = Product::where('productLine', $product->productLine)
                                     ->inRandomOrder()
-                                    ->take(3)
+                                    ->take(4)
                                     ->get();
 
-        return view('products.show', compact('product', 'relatedProducts'));
+        return view('products.show', compact('product', 'relatedProducts', 'user'));
     }
 
     /**
@@ -117,5 +118,44 @@ class ProductsController extends Controller
     {
         $product->delete();
         return redirect()->action('ProductsController@index');
+    }
+
+    public function addtocart(Request $request, Product $product)
+    {
+        if (!$request->session()->has('shopping_list')) {
+            session([
+              'shopping_list' => []
+            ]);
+        }
+        $shoppingList = $request->session()->get('shopping_list');
+
+        foreach ($shoppingList as $key => $p) {
+          if ($p['product']->productCode == $product->productCode) {
+            unset($shoppingList[$key]);
+          }
+        }
+
+        array_push($shoppingList, [
+          'product' => $product,
+          'qty' => $request->input('qty', 1)
+        ]);
+
+        $request->session()->put('shopping_list', $shoppingList);
+
+        return redirect()->action('ShoppingCartController@index');
+    }
+
+    public function removefromcart(Request $request, Product $product)
+    {
+        $shoppingList = $request->session()->get('shopping_list', []);
+        foreach ($shoppingList as $key => $p) {
+          if ($p['product']->productCode == $product->productCode) {
+            unset($shoppingList[$key]);
+          }
+        }
+        session([
+          'shopping_list' => $shoppingList
+        ]);
+        return redirect()->action('ShoppingCartController@index');
     }
 }

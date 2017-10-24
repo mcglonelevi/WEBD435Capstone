@@ -9,7 +9,7 @@
     {!! Form::open(['route' => 'products.index', 'method' => 'get']) !!}
         <div class="grid">
           <div class="col-sm-12 form-group">
-              {{ Form::text('search', null, array('required' => 'required') ) }}
+              {{ Form::text('search', null, array('placeholder' => 'Search products by name...') ) }}
               {{ Form::submit('Search Products') }}
           </div>
       </div>

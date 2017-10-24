@@ -17,7 +17,7 @@
             {{ $orders->links() }}
         </div>
         <div class="container product-display">
-            <table class="listing">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>
