@@ -99,7 +99,64 @@ h2 {
   font-size: 1.5em;
 }
 
-p {
+/* Home page */
+.main-nav-container {
+  background-color: #fbb611;
+  height: 35px;
+  margin: -20px 0 0 0;
+  padding: 0;
+  font-size: 12px;
+}
+.nav {
+  list-style: none;
+  text-align: center;
+  padding: 10px 0 0 0;
+}
+
+.nav > li {
+  display: inline-block; 
+  padding: 0 25px 0 25px;
+}
+
+.nav > li > a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Featured Products*/
+section h3 {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.featured-products-area {
+  border: 1px solid #cccccc;
+  position: relative;
+  top: -2px;
+ /* -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+       box-shadow: 0 8px 6px -6px black; */
+ }
+
+ .special-feature {
+  width: 300px;
+  height: 225px;
+   
+ }
+
+ .sexy-box {
+  height: 250px;
+  width: 360px;
+  margin-top:20px;
+  margin-bottom: 10px;
+  margin-left: 18px;
+  border:1px solid #cccccc;
+  padding:10px;
+}
+
+  p {
   margin-top: 5px;
   margin-bottom: 5px;
-}
+  }
