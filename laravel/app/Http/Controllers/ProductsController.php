@@ -119,4 +119,43 @@ class ProductsController extends Controller
         $product->delete();
         return redirect()->action('ProductsController@index');
     }
+
+    public function addtocart(Request $request, Product $product)
+    {
+        if (!$request->session()->has('shopping_list')) {
+            session([
+              'shopping_list' => []
+            ]);
+        }
+        $shoppingList = $request->session()->get('shopping_list');
+
+        foreach ($shoppingList as $key => $p) {
+          if ($p['product']->productCode == $product->productCode) {
+            unset($shoppingList[$key]);
+          }
+        }
+
+        array_push($shoppingList, [
+          'product' => $product,
+          'qty' => $request->input('qty', 1)
+        ]);
+
+        $request->session()->put('shopping_list', $shoppingList);
+
+        return redirect()->action('ShoppingCartController@index');
+    }
+
+    public function removefromcart(Request $request, Product $product)
+    {
+        $shoppingList = $request->session()->get('shopping_list', []);
+        foreach ($shoppingList as $key => $p) {
+          if ($p['product']->productCode == $product->productCode) {
+            unset($shoppingList[$key]);
+          }
+        }
+        session([
+          'shopping_list' => $shoppingList
+        ]);
+        return redirect()->action('ShoppingCartController@index');
+    }
 }

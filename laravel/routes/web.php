@@ -20,6 +20,15 @@ Route::put('/customers/{customer}/changePassword', [
 ]);
 Route::resource('customers', 'CustomersController');
 Route::resource('products', 'ProductsController');
+Route::get('/products/{product}/addtocart', [
+  'uses' => 'ProductsController@addtocart',
+  'as' => 'products.addtocart'
+]);
+Route::get('/products/{product}/removefromcart', [
+  'uses' => 'ProductsController@removefromcart',
+  'as' => 'products.removefromcart'
+]);
+Route::resource('cart', 'ShoppingCartController');
 Route::resource('orders', 'OrdersController');
 Route::resource('orders.orderdetails', 'OrderdetailsController');
 Auth::routes();
