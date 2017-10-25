@@ -163,3 +163,15 @@ section h3 {
 .featured-product-wrapper {
   text-align: center;
 }
+.cart-table {
+  width: 100%;
+}
+
+.cart-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.product-display td form {
+  transform: translateY(-50%);
+}

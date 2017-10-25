@@ -25,10 +25,21 @@
         </p>
         <br>
         <div class="grid">
-            <div class="col-sm-10">
+            <div class="col-sm-9">
                 <h2>${{ $product->buyPrice }}</h2>
             </div>
-            <input type="button" value="Add to Cart" class="btn btn-success" />
+            <div class="col-sm-3">
+              {!! Form::open(['url' => url('/products/' . $product->productCode . '/addtocart'), 'method' => 'get']); !!}
+                  {!! Form::label('qty', 'Quantity:') !!}
+                  <div>
+                    {!! Form::text('text', '1', [
+                      'name' => 'qty',
+                      'style' => 'width: 150px; float: left; margin-right: 20px;',
+                    ]); !!}
+                    {!! Form::submit('Add to Cart', ['class' => 'btn btn-success btn-sm']); !!}
+                  </div>
+              {!! Form::close(); !!}
+            </div>
         </div>
         <br>
         <br>
