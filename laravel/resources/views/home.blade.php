@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="main-nav-container"> 
+   <div class="main-nav-container">
         <div class="container">
             <nav>
                 <ul class="nav">
@@ -9,7 +9,7 @@
                     <li><a href="#" title="About">ABOUT</a>
                     <li><a href="#" title="Store">STORE</a>
                     <li><a href="#" title="Contact Us" >CONTACT US</a>
-                </ul>  
+                </ul>
             </nav>
         </div>
   </div><!--// end main-nav-container -->
@@ -19,57 +19,27 @@
   <div class="container featured-products-area">
       <section>
             <h3>FEATURED PRODUCTS</h3>
+            @foreach($products->chunk(3) as $chunk)
             <article>
                 <div class="grid">
-                    <div class="col-sm-4">
+                  @foreach($chunk as $p)
+                    <div class="col-sm-4 featured-product-wrapper">
+                      <a href="{{ route('products.show', [$p]) }}">
                         <div class="sexy-box">
-                            <a href="#">
-                                <img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A0ZX_1_201702232042574573.jpg?t=1023171" alt"Feature" class="special-feature" />
-                            </a>
+                                @if ($p->image_url)
+                                  <img src="{{ asset($p->image_url) }}" alt"Feature" class="special-feature" />
+                                @else
+                                  <img src="http://via.placeholder.com/300x300" alt"Feature" class="special-feature" />
+                                @endif
                         </div>
+                        {{ $p->productName }}
+                      </a>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="sexy-box">
-                            <a href="#">
-                                <img src="https://images10.newegg.com/ProductImageCompressAll300/24-009-909-07.jpg?t=1023171" alt"Feature" class="special-feature" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sexy-box">
-                            <a href="#">
-                                <img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A0ZX_1_201702232042574573.jpg?t=1023171" alt"Feature" class="special-feature" />
-                            </a>
-                        </div>
-                    </div>
+                  @endforeach
                 </div>
             </article>
-            <article>
-                <div class="grid">
-                    <div class="col-sm-4">
-                        <div class="sexy-box">
-                            <a href="">    
-                                <img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/23-201-106-Z01.jpg?t=1023171" alt"Feature"class="special-feature" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sexy-box">
-                            <a href=""> 
-                                 <img src="https://images10.newegg.com/NeweggImage/ProductImageCompressAll300/A0ZX_1_201702232042574573.jpg?t=1023171" alt"Feature" class="special-feature" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sexy-box">
-                            <a href=""> 
-                                <img src="https://images10.newegg.com/ProductImageCompressAll300/14-127-943-S99.jpg?t=1023171" alt"Feature" class="special-feature" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            @endforeach
       </section>
-     
+
   </div>
 @endsection
