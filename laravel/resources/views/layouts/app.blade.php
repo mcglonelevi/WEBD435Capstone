@@ -54,6 +54,13 @@
     </div>
   </header>
   <div id="body-content">
+    @if (session()->has('status'))
+    <div class="container">
+      <div class="alert alert-danger" style="margin-bottom: 20px;">
+        {{session()->get('status')}}
+      </div>
+    </div>
+    @endif
     @yield('content')
   </div>
   <footer>

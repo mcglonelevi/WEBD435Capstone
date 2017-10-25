@@ -31,6 +31,10 @@ class ShoppingCartController extends Controller
      */
     public function create(Request $request)
     {
+        if (!$request->user()) {
+            \Session::flash('status', 'You must login or register to continue with your order.');
+            return redirect('/login');
+        }
         $products = $request->session()->get('shopping_list', []);
         $subtotal = collect($products)->reduce(function ($carry, $i) {
           return $carry + ($i['qty'] * $i['product']->buyPrice);
