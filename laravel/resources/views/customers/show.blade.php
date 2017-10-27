@@ -6,6 +6,7 @@
 
 <div class="container">
         <h1>Customer Profile</h1>
+        <h2>Loyalty Points: {{$customer->loyalty_points}}</h2>
         {!! Form::model($customer, ['route' => ['customers.update', $customer->customerNumber], 'method' => 'put']) !!}
         <div class="grid">
           <div class="col-sm-6 form-group">

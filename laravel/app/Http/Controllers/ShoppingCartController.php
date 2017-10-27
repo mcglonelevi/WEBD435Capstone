@@ -61,13 +61,24 @@ class ShoppingCartController extends Controller
           $orderNumber = mt_rand(0, 60000);
         }
 
+        $amt = collect($shoppingList)->reduce(function ($carry, $i) {
+          return $carry + ($i['qty'] * $i['product']->buyPrice);
+        }, 0);
+
+        if ($request->has('redeem_points') == true) {
+          $amt -= $request->user()->customer->loyalty_points / 100;
+          $request->user()->customer->loyalty_points = 0;
+          $request->user()->customer->save();
+          if ($amt < 0) {
+            $amt = 0;
+          }
+        }
+
         $payment = new Payment();
         $payment->customerNumber = $request->user()->customer->customerNumber;
         $payment->checkNumber = $request->input('checkNumber');
         $payment->paymentDate = Carbon::now();
-        $payment->amount = collect($shoppingList)->reduce(function ($carry, $i) {
-          return $carry + ($i['qty'] * $i['product']->buyPrice);
-        }, 0);
+        $payment->amount = $amt;
         $payment->save();
 
         $order = new Order();
@@ -90,6 +101,11 @@ class ShoppingCartController extends Controller
 
           $p['product']->quantityInStock = $p['product']->quantityInStock - $p['qty'];
           $p['product']->save();
+        }
+
+        if (!$request->has('redeem_points')) {
+          $request->user()->customer->loyalty_points += intval($order->getTotal());
+          $request->user()->customer->save();
         }
 
         $request->session()->put('shopping_list', []);
