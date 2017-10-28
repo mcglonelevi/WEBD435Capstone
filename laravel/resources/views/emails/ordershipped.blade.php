@@ -2,7 +2,7 @@
   Lugnutz Computer Parts has confirmed your payment and shipped your order:
 </h1>
 <h2>
-  Total: ${{ $order->getTotal() }}
+  Total: ${{ number_format($order->getTotal(), 2) }}
 </h2>
 <p>
   Items Purchased
@@ -20,7 +20,7 @@
     @foreach ($order->orderDetails as $od)
       <tr>
         <td>{{ $od->product->productName }}</td>
-        <td>{{ $od->priceEach }}</td>
+        <td>{{ number_format($od->priceEach, 2) }}</td>
         <td>{{ $od->quantityOrdered }}</td>
       </tr>
     @endforeach
