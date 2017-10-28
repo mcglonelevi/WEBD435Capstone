@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,21 @@ class HomeController extends Controller
     {
         $products = Product::inRandomOrder()->limit(6)->get();
         return view('home', compact('products'));
+    }
+
+    public function contactUs()
+    {
+      return view('contactus');
+    }
+
+    public function handleContact(Request $request)
+    {
+      $input = $request->input();
+      Mail::send('emails.message', compact('input'), function ($m) use ($input) {
+          $m->from($input['email'], 'User');
+          $m->to('lugnutzcp@gmail.com', 'Lugnutz Computer Parts')->subject('Contacted by a customer!');
+      });
+      \Session::flash('status', 'We have received your message.');
+      return redirect()->action('HomeController@index');
     }
 }

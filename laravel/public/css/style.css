@@ -7,7 +7,7 @@ a {
     text-decoration: underline;
 }
 
-input[type=text] {
+input[type=text], input[type=email], textarea {
     border-radius: 3px;
     padding: 3px;
     border: solid 1px #000;
@@ -57,11 +57,11 @@ table.listing {
   transform: translateY(-50%);
 }
 
-label, input[type=text] {
+label, input[type=text], input[type=email], textarea {
   display: block;
 }
 
-input[type=text] {
+input[type=text], input[type=email], textarea {
   width: 100%;
 }
 
