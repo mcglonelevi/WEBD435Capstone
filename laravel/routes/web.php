@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contactUs');
+Route::post('/contact', 'HomeController@handleContact');
 
 Route::put('/customers/{customer}/changePassword', [
   'uses' => 'CustomersController@changePassword',
