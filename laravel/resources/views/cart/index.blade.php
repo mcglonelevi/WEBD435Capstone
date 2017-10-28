@@ -34,9 +34,10 @@
                 <td class="update-qty">
                   <div style="width: 170px; display: inline-block;">
                     {!! Form::open(['url' => url('/products/' . $p['product']->productCode . '/addtocart'), 'method' => 'get']); !!}
-                        {!! Form::text('text', $p['qty'], [
+                        {!! Form::number('text', $p['qty'], [
                           'name' => 'qty',
-                          'style' => 'width: 100px; float: left;'
+                          'style' => 'width: 100px; float: left;',
+                          'min' => '0',
                         ]); !!}
                         {!! Form::submit('Update', ['class' => 'btn btn-success btn-sm']); !!}
                     {!! Form::close(); !!}
