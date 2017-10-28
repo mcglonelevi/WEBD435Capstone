@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Order;
 use App\OrderDetail;
 use App\Payment;
+use Mail;
 
 class ShoppingCartController extends Controller
 {
@@ -50,6 +51,8 @@ class ShoppingCartController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+
         $shoppingList = $request->session()->get('shopping_list');
         if (count($shoppingList) == 0) {
             abort(403, 'You must have items in your shopping cart to checkout.');
@@ -88,6 +91,9 @@ class ShoppingCartController extends Controller
         $order->orderNumber = $orderNumber;
         $order->save();
 
+        $order = Order::where('orderNumber', $orderNumber)
+                        ->first();
+
         $counter = 1;
 
         foreach ($shoppingList as $p) {
@@ -107,6 +113,12 @@ class ShoppingCartController extends Controller
           $request->user()->customer->loyalty_points += intval($order->getTotal());
           $request->user()->customer->save();
         }
+
+        Mail::send('emails.orderreceived', compact('user', 'order'), function ($m) use ($user) {
+            $m->from('lugnutzcp@gmail.com', 'Lugnutz Computer Parts');
+
+            $m->to($user->email, $user->name)->subject('Your Order has been received!');
+        });
 
         $request->session()->put('shopping_list', []);
 
