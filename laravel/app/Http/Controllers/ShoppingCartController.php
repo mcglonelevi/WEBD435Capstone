@@ -110,6 +110,8 @@ class ShoppingCartController extends Controller
 
         $request->session()->put('shopping_list', []);
 
+        \Session::flash('status', 'Your order has been received.');
+
         return redirect()->action('HomeController@index');
     }
 
