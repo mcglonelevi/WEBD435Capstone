@@ -88,12 +88,13 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $origStatus = $order->status;
         $order->fill($request->all());
         $order->save();
 
         $user = $order->customer->user;
 
-        if ($order->status == "Shipped") {
+        if ($order->status == "Shipped" && $order->status != $origStatus) {
           Mail::send('emails.ordershipped', compact('order'), function ($m) use ($user) {
               $m->from('lugnutzcp@gmail.com', 'Lugnutz Computer Parts');
 
