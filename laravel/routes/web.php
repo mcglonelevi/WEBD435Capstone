@@ -31,4 +31,9 @@ Route::get('/products/{product}/removefromcart', [
 Route::resource('cart', 'ShoppingCartController');
 Route::resource('orders', 'OrdersController');
 Route::resource('orders.orderdetails', 'OrderdetailsController');
+
+// Static Routes
+Route::view('/about', 'about');
+Route::view('/locations', 'locations');
+
 Auth::routes();

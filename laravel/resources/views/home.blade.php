@@ -1,18 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="main-nav-container">
-        <div class="container">
-            <nav>
-                <ul class="nav">
-                    <li><a href="#" title="Home" >HOME</a>
-                    <li><a href="#" title="About">ABOUT</a>
-                    <li><a href="#" title="Store">STORE</a>
-                    <li><a href="#" title="Contact Us" >CONTACT US</a>
-                </ul>
-            </nav>
-        </div>
-  </div><!--// end main-nav-container -->
   <div class="col-sm-12">
       <img src="https://promotions.newegg.com/intel/17-4215/1920x360.jpg" alt="Banner" border="0" class="img-responsive" />
   </div>
