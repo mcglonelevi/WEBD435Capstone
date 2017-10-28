@@ -50,7 +50,7 @@
             </li>
             <li>
               <a href="{{ url('/customers/' . Auth::user()->customerNumber) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  {{ Auth::user()->name }} <span class="caret"></span>
+                  {{ Auth::user()->customer->customerName }} <span class="caret"></span>
               </a>
             </li>
         @endguest
@@ -61,6 +61,25 @@
       </form>
     </div>
   </header>
+  <div class="main-nav-container">
+      <div class="container">
+          <nav>
+              <ul class="nav">
+                  @if (Request::user() && Request::user()->is_admin)
+                      <li><a href="{{ url('/orders') }}" title="View Orders" >Orders</a></li>
+                      <li><a href="{{ url('/products') }}" title="View Products">Products</a></li>
+                      <li><a href="{{ url('/customers') }}" title="View Users">Users</a></li>
+                      <li><a href="{{ url('/customers/' . Request::user()->customerNumber) }}" title="View Profile">Profile</a></li>
+                  @else
+                      <li><a href="{{ url('/') }}" title="Home" >HOME</a>
+                      <li><a href="{{ url('/about') }}" title="About Us">ABOUT</a>
+                      <li><a href="{{ url('/locations') }}" title="Store Locations">STORE</a>
+                      <li><a href="#" title="Contact Us" >CONTACT US</a>
+                  @endif
+              </ul>
+          </nav>
+      </div>
+  </div><!--// end main-nav-container -->
   <div id="body-content">
     @if (session()->has('status'))
     <div class="container">
