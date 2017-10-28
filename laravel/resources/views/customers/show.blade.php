@@ -76,7 +76,7 @@
     <br>
       <div class="grid">
         <div class="col-sm-12">
-            @foreach ($customer->orders as $o)
+            @foreach ($customer->orders->sortByDesc('orderDate') as $o)
             <div>
               <h2>
                 {{$o->orderDate}} -
