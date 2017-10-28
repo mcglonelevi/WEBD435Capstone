@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderDetail;
+use Mail;
 
 class OrdersController extends Controller
 {
@@ -12,7 +13,7 @@ class OrdersController extends Controller
     {
         $this->middleware('admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -89,6 +90,17 @@ class OrdersController extends Controller
     {
         $order->fill($request->all());
         $order->save();
+
+        $user = $order->customer->user;
+
+        if ($order->status == "Shipped") {
+          Mail::send('emails.ordershipped', compact('order'), function ($m) use ($user) {
+              $m->from('lugnutzcp@gmail.com', 'Lugnutz Computer Parts');
+
+              $m->to($user->email, $user->name)->subject('Your Order has been shipped!');
+          });
+        }
+
         return redirect()->action('OrdersController@show', [$order]);
     }
 
