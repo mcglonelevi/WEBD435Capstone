@@ -103,7 +103,7 @@ h2 {
 .main-nav-container {
   background-color: #fbb611;
   height: 35px;
-  margin: -20px 0 0 0;
+  margin: -20px 0 20px 0;
   padding: 0;
   font-size: 12px;
 }

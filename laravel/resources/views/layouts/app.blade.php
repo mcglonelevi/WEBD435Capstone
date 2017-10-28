@@ -74,7 +74,7 @@
                       <li><a href="{{ url('/') }}" title="Home" >HOME</a>
                       <li><a href="{{ url('/about') }}" title="About Us">ABOUT</a>
                       <li><a href="{{ url('/locations') }}" title="Store Locations">STORE</a>
-                      <li><a href="#" title="Contact Us" >CONTACT US</a>
+                      <li><a href="{{ url('/contact') }}" title="Contact Us" >CONTACT US</a>
                   @endif
               </ul>
           </nav>
@@ -94,10 +94,10 @@
       <div class="container">
           <div class="footer-list-wrapper">
               <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Store</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="{{ url('/') }}" title="Homepage">Home</a></li>
+                  <li><a href="{{ url('/about') }}" title="About Us">About</a></li>
+                  <li><a href="{{ url('/locations') }}" title="Store Locations">Store</a></li>
+                  <li><a href="{{ url('/contact') }}" title="Contact Us">Contact Us</a></li>
               </ul>
           </div>
           <div class="footer-list-wrapper">
