@@ -23,12 +23,18 @@ class ProductsController extends Controller
     {
         $products = Product::query();
 
+        $categories = ProductLine::all()->pluck('productLine', 'productLine');
+
         if ($request->input('search')) {
             $products = $products->where('productName', 'like', '%' . $request->input('search') . '%');
         }
 
+        if ($request->input('category', null)) {
+            $products = $products->where('productLine', '=', $request->input('category'));
+        }
+
         $products = $products->paginate(10);
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'categories'));
     }
 
     /**
