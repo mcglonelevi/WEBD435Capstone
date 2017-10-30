@@ -141,7 +141,7 @@ class ProductsController extends Controller
         ]);
 
         foreach ($shoppingList as $key => $p) {
-          if ($product['qty'] == 0) {
+          if ($p['qty'] == 0) {
             unset($shoppingList[$key]);
           }
         }
