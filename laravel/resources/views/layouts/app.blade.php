@@ -54,6 +54,11 @@
               </a>
             </li>
         @endguest
+        <li>
+          <a href="{{ url('/cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="{{ asset('img/shopping-cart.jpg') }}" alt="">
+          </a>
+        </li>
       </ul>
       <form action="/products" class="search-form">
           <input name="search" id="search" class="search" type="text" placeholder="Search by Keyword...">
