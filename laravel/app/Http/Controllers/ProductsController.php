@@ -140,6 +140,12 @@ class ProductsController extends Controller
           'qty' => $request->input('qty', 1)
         ]);
 
+        foreach ($shoppingList as $key => $p) {
+          if ($p['qty'] == 0) {
+            unset($shoppingList[$key]);
+          }
+        }
+
         $request->session()->put('shopping_list', $shoppingList);
 
         return redirect()->action('ShoppingCartController@index');
