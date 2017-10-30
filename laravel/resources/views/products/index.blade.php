@@ -3,17 +3,22 @@
 @section('content')
 <div class="container">
     <h1>Products</h1>
-    <div class="container">
-        {{ $products->links() }}
-    </div>
     {!! Form::open(['route' => 'products.index', 'method' => 'get']) !!}
         <div class="grid">
-          <div class="col-sm-12 form-group">
+          <div class="col-sm-4 form-group">
               {{ Form::text('search', null, array('placeholder' => 'Search products by name...') ) }}
+          </div>
+          <div class="col-sm-4 form-group">
+              {{ Form::select('category', array_merge([null => 'All Categories'], $categories->toArray())) }}
+          </div>
+          <div class="col-sm-4 form-group">
               {{ Form::submit('Search Products') }}
           </div>
       </div>
     {!! Form::close() !!}
+    <div class="container">
+        {{ $products->links() }}
+    </div>
     <div class="container product-display">
       <table class="listing">
         @foreach($products as $p)
