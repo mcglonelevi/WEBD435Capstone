@@ -202,7 +202,13 @@ section h3 {
 }
 
 .login-bg {
-    background-image: url ("/img/login_bg.jpg");
-    height: 679px;
+  background-image: url(/img/login_bg.jpg);
+  height: 679px;
+  background-size: cover;
+  margin: -20px 0;
+  padding: 175px 0;
 }
 
+.login-form {
+  background: #fff;
+}
