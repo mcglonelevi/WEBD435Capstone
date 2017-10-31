@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container login-bg">
+<div class="container">
     <div class="grid">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">

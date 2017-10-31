@@ -8,7 +8,6 @@ a {
 }
 
 input[type=text], input[type=email], textarea, select {
-{
     border-radius: 3px;
     padding: 3px;
     border: solid 1px #000;
@@ -39,171 +38,145 @@ input[type=text], input[type=email], textarea, select {
 }
 
 .product-display {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 table.listing {
-    width: 100%;
+  width: 100%;
 }
 
 .listing td {
-    position: relative;
-    width: 150px;
+  position: relative;
+  width: 150px;
 }
 
-.listing td:nth-child(2) a,
-.listing td:nth-child(3) a {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+.listing td:nth-child(2) a, .listing td:nth-child(3) a {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 label, input[type=text], input[type=email], textarea, select {
   display: block;
 }
 
-label,
-input[type=text],
-input[type=email],
-textarea {
-    display: block;
-}
-
-input[type=text],
-input[type=email],
-textarea,
-select {
-    width: 100%;
+input[type=text], input[type=email], textarea, select {
+  width: 100%;
 }
 
 .form-group {
-    padding: 0 10px;
-    margin: 5px 0;
+  padding: 0 10px;
+  margin: 5px 0;
 }
 
 .help-block {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .right {
-    float: right;
-    text-align: right;
+  float:right;
+  text-align: right;
 }
 
 .login label.right {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
-body,
-html {
-    font-family: 'Arial';
-    color: #000;
+body, html {
+  font-family: 'Arial';
+  color: #000;
 }
 
-p,
-label,
-input,
-.btn,
-span,
-strong,
-div,
-td,
-th,
-h1,
-h2 {
-    color: #000;
+p, label, input, .btn, span, strong, div, td, th, h1, h2 {
+  color: #000;
 }
 
 h1 {
-    font-size: 2em;
+  font-size: 2em;
 }
-
 h2 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 b {
   font-weight: 700;
 }
 
-
 /* Home page */
-
 .main-nav-container {
-    background-color: #fbb611;
-    height: 35px;
-    margin: -20px 0 20px 0;
-    padding: 0;
-    font-size: 12px;
+  background-color: #fbb611;
+  height: 35px;
+  margin: -20px 0 20px 0;
+  padding: 0;
+  font-size: 12px;
 }
-
 .nav {
-    list-style: none;
-    text-align: center;
-    padding: 10px 0 0 0;
+  list-style: none;
+  text-align: center;
+  padding: 10px 0 0 0;
 }
 
-.nav>li {
-    display: inline-block;
-    padding: 0 25px 0 25px;
+.nav > li {
+  display: inline-block;
+  padding: 0 25px 0 25px;
 }
 
-.nav>li>a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 500;
+.nav > li > a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
 }
-
 
 /* Featured Products*/
-
 section h3 {
-    text-align: center;
-    margin: 20px 0 0 0;
+  text-align: center;
+  margin: 20px 0 0 0;
 }
 
 .featured-products-area {
-    border: 1px solid #cccccc;
-    position: relative;
-    top: -2px;
+  border: 1px solid #cccccc;
+  position: relative;
+  top: -2px;
+ /* -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+       box-shadow: 0 8px 6px -6px black; */
+ }
+
+ .special-feature {
+  width: 100%;
+  height: 100%;
+ }
+
+ .sexy-box {
+  height: 300px;
+  width: 360px;
+  margin-top:20px;
+  margin-bottom: 10px;
+  margin-left: 18px;
+  border:1px solid #cccccc;
+  padding:0;
 }
 
-.special-feature {
-    width: 100%;
-    height: 100%;
-}
-
-.sexy-box {
-    height: 300px;
-    width: 360px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 18px;
-    border: 1px solid #cccccc;
-    padding: 0;
-}
-
-p {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
+  p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  }
 
 .featured-product-wrapper {
-    text-align: center;
+  text-align: center;
 }
-
 .cart-table {
-    width: 100%;
+  width: 100%;
 }
 
 .cart-table td {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .product-display td form {
-    transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 #map {
@@ -232,3 +205,4 @@ p {
     background-image: url ("/img/login_bg.jpg");
     height: 679px;
 }
+
