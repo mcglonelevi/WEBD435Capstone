@@ -56,12 +56,10 @@
         @endguest
         <li>
           <a href="{{ url('/cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <img src="{{ asset('img/cart.png') }}" alt="Shopping cart icon">
+              <img src="{{ asset('img/cart.png') }}" alt="Cart">
           </a>
         </li>
-        @if (Session::get('total_items', 0) > 0)
-          <span class="badge">{{ Session::get('total_items') }}</span>
-        @endif
+        <span class="badge">{{ array_sum(array_column(Session::get('shopping_list', []), 'qty')) }}</span>
       </ul>
       <form action="/products" class="search-form">
           <input name="search" id="search" class="search" type="text" placeholder="Search by Keyword...">
