@@ -56,9 +56,12 @@
         @endguest
         <li>
           <a href="{{ url('/cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <img src="{{ asset('img/shopping-cart.jpg') }}" alt="">
+              <img src="{{ asset('img/cart.png') }}" alt="Shopping cart icon">
           </a>
         </li>
+        @if (Session::get('total_items', 0) > 0)
+          <span class="badge">{{ Session::get('total_items') }}</span>
+        @endif
       </ul>
       <form action="/products" class="search-form">
           <input name="search" id="search" class="search" type="text" placeholder="Search by Keyword...">

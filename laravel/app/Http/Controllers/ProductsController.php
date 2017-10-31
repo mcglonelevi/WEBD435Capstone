@@ -152,7 +152,14 @@ class ProductsController extends Controller
           }
         }
 
+        // Count items in cart
+        $totalItems = 0;
+        foreach ($shoppingList as $p) {
+            $totalItems += $p['qty'];
+        }
+
         $request->session()->put('shopping_list', $shoppingList);
+        $request->session()->put('total_items', $totalItems);
 
         return redirect()->action('ShoppingCartController@index');
     }
@@ -165,8 +172,16 @@ class ProductsController extends Controller
             unset($shoppingList[$key]);
           }
         }
+
+        // Count items in cart
+        $totalItems = 0;
+        foreach ($shoppingList as $p) {
+            $totalItems += $p['qty'];
+        }
+
         session([
-          'shopping_list' => $shoppingList
+          'shopping_list' => $shoppingList,
+          'total_items'   => $totalItems
         ]);
         return redirect()->action('ShoppingCartController@index');
     }
