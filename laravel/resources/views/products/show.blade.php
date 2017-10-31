@@ -50,8 +50,9 @@
               <a class="fb-xfbml-parse-ignore" target="_blank"
               href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}&amp;src=sdkpreparse">Share</a></div>
 
-        <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
-
+        <div style="margin-top: 10px;">
+          <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+        </div>
         @if (isset($user) && $user->is_admin)
             <a href="{{ url('products/' . $product->productCode . '/edit') }}" class="btn btn-primary">Edit</a>
 
