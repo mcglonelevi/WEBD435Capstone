@@ -54,6 +54,11 @@
               </a>
             </li>
         @endguest
+        <li>
+          <a href="{{ url('/cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="{{ asset('img/shopping-cart.jpg') }}" alt="">
+          </a>
+        </li>
       </ul>
       <form action="/products" class="search-form">
           <input name="search" id="search" class="search" type="text" placeholder="Search by Keyword...">
@@ -71,10 +76,11 @@
                       <li><a href="{{ url('/customers') }}" title="View Users">Users</a></li>
                       <li><a href="{{ url('/customers/' . Request::user()->customerNumber) }}" title="View Profile">Profile</a></li>
                   @else
-                      <li><a href="{{ url('/') }}" title="Home" >HOME</a>
-                      <li><a href="{{ url('/about') }}" title="About Us">ABOUT</a>
-                      <li><a href="{{ url('/locations') }}" title="Store Locations">STORE</a>
-                      <li><a href="{{ url('/contact') }}" title="Contact Us" >CONTACT US</a>
+                      <li><a href="{{ url('/') }}" title="Home" >Home</a>
+                        <li><a href="{{ url('/products') }}" title="View Products">Products</a></li>
+                      <li><a href="{{ url('/about') }}" title="About Us">About</a>
+                      <li><a href="{{ url('/locations') }}" title="Store Locations">Store</a>
+                      <li><a href="{{ url('/contact') }}" title="Contact Us" >Contact Us</a>
                   @endif
               </ul>
           </nav>
