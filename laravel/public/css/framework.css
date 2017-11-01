@@ -300,6 +300,19 @@ label.control-label {
 
 
 /*
+ *
+ */
+.badge {
+    display: inline;
+    background-color: #636c72;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 35%;
+    padding: 3px 7px;
+    margin-left: 5px;
+}
+
+/*
  * Generic helper classes
  */
 .text-primary {

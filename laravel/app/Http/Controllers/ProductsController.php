@@ -165,6 +165,7 @@ class ProductsController extends Controller
             unset($shoppingList[$key]);
           }
         }
+
         session([
           'shopping_list' => $shoppingList
         ]);
