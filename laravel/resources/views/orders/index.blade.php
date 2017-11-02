@@ -3,16 +3,17 @@
 @section('content')
     <div class="container">
         <h1>Orders</h1>
-        <div class="container">
-            {!! Form::open(['route' => 'orders.index', 'method' => 'get']) !!}
-                <div class="grid">
-                  <div class="col-sm-12 form-group">
-                      {{ Form::text('search', null, array('required' => 'required', 'placeholder' => 'Search by Order Number') ) }}
-                      {{ Form::submit('Search Orders') }}
-                  </div>
-              </div>
+        {!! Form::open(['route' => 'orders.index', 'method' => 'get']) !!}
+        <div class="grid">
+            <div class="col-sm-4 form-group">
+                {{ Form::text('search', null, array('placeholder' => 'Search by order number or customer name...', 'class' => 'form-control') ) }}
+            </div>
+            <div class="col-sm-4 form-group">
+                {{ Form::submit('Search Orders', ['class' => 'btn btn-primary btn-md']) }}
+            </div>
             {!! Form::close() !!}
         </div>
+        <br>
         <div class="container">
             {{ $orders->links() }}
         </div>

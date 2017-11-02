@@ -2,8 +2,6 @@
 
 @section('content')
 
-<!-- This HTML is just to give an idea. It all will need edited/replaced when styles are created -->
-
 <div class="container">
         <h1>Customer Profile</h1>
         <h2>Loyalty Points: {{$customer->loyalty_points}}</h2>
@@ -72,18 +70,17 @@
         </div>
     @endif
 
-    <h1>Recent Order History</h1>
-    <br>
+    <h2>Recent Order History</h2>
       <div class="grid">
         <div class="col-sm-12">
             @foreach ($customer->orders->sortByDesc('orderDate') as $o)
             <div>
-              <h2>
+              <h3>
                 {{$o->orderDate}} -
                 #{{$o->orderNumber}} -
                 ${{$o->getTotal()}} -
                 {{$o->status}}
-              </h2>
+              </h3>
             </div>
             <table class="table table-striped table-hover">
               @foreach($o->orderdetails as $orderd)

@@ -6,9 +6,8 @@
 	<br>
 	<div class="grid">
 		<div class="col-sm-5">
-		<h1>201 S Grant Ave, Columbus, OH</h1>
-		<h1>614-123-4567</h1>
-			<br>
+		<h2>201 S Grant Ave, Columbus, OH</h2>
+		<h2>614-123-4567</h2>
 			<p>
 				<b>Hours:</b>
 			</p>

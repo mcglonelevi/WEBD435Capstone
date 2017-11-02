@@ -15,11 +15,10 @@
     </div>
     <div class="col-sm-6">
         <h1 style="font-size: 200%; padding: 20px 20px 20px 0; font-weight: 500;">{{ $product->productName }}</h1>
-        <br>
         <p>
             {{ $product->productDescription }}
         </p>
-        <br><br>
+        <br>
         <p>
             {{ $product->quantityInStock }} in stock
         </p>
@@ -54,11 +53,13 @@
           <div class="fb-like" data-href="{{ Request::url() }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
         </div>
         @if (isset($user) && $user->is_admin)
-            <a href="{{ url('products/' . $product->productCode . '/edit') }}" class="btn btn-primary">Edit</a>
+            <div class="right">
+                <a href="{{ url('products/' . $product->productCode . '/edit') }}" class="btn btn-primary">Edit</a>
 
-            {!! Form::model($product, ['route' => ['products.destroy', $product->productCode], 'method' => 'delete', 'class' => 'form-inline']) !!}
-                {{ Form::submit('Delete', array('class' => 'btn btn-danger') ) }}
-            {!! Form::close() !!}
+                {!! Form::model($product, ['route' => ['products.destroy', $product->productCode], 'method' => 'delete', 'class' => 'form-inline']) !!}
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger') ) }}
+                {!! Form::close() !!}
+            </div>
         @endif
     </div>
 </div>

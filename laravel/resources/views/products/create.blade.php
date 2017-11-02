@@ -11,7 +11,6 @@
     <h1>Create New Product</h1>
     {!! Form::open(['action' => 'ProductsController@store', 'method' => 'post']) !!}
 @endif
-    <br>
     <div class="form-group">
         {{ Form::label('productCode', 'Product Code', array('class' => 'control-label') ) }}
         {{ Form::text('productCode', null, array('placeholder' => 'Sxx_xxxx', 'required' => 'required', 'class' => 'form-control') ) }}
