@@ -3,14 +3,13 @@
 @section('content')
     <div class="container">
         <h1>Order Details</h1>
-        <br>
             <div class="container">
-              <h2>Set Order Status</h2>
-              {!! Form::open(['url' => route('orders.update', [
-              $order->orderNumber
-            ]), 'method' => 'put']) !!}
-              {!! Form::select('status', $order->getStatuses(), $order->status, array('class' => 'form-control') ) !!}
-              {!! Form::submit('Save Status', array('class' => 'btn btn-success btn-md')) !!}
+              {!! Form::open(['url' => route('orders.update', [$order->orderNumber]), 'method' => 'put']) !!}
+                <div class="form-group">
+                  {!! Form::label('status', 'Set Order Status:', ['class' => 'control-label']) !!}
+                  {!! Form::select('status', $order->getStatuses(), $order->status, array('class' => 'form-control') ) !!}
+                </div>
+                {!! Form::submit('Save Status', array('class' => 'btn btn-success btn-md')) !!}
               {!! Form::close() !!}
             </div>
             <br>

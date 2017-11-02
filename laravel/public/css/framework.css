@@ -266,7 +266,7 @@
  * Forms
  */
  div.form-group {
-
+    padding-left: 0px; /* Remove left pad so form groups sit even on left side w/ other elements */
  }
  form.form-horizontal div.form-group {
     padding-bottom: 10px;
@@ -285,6 +285,7 @@ select.form-control {
     height: 30px;
     color: #000;
     font-size: 14px;
+    border: 1px solid #a0a0a0;
 }
 .form-control option {
     color: #000;

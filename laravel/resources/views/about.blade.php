@@ -12,7 +12,7 @@
                     </p>
                     <h2>Our Mission</h2>
                     <p>
-                        Our mission is to build lasting customer relationships by delivering only highest quality products and services that exceed the expectations of our clients. For over 50 years, we have believed transparency is key to establishing and maintaining customer satisfaction. Whether you are in the market for a new PC or a single component, no order is too large nor too small for our dedicated staff. At Lugnutz Computer Parts, your satisfaction is our number one priority, and we encourage all of our customers (potential and returning) to reach out for honest support and recommendations, or to simply learn more about Larry's legacy!
+                        Our mission is to build lasting customer relationships by delivering only the highest quality products and services that exceed the expectations of our clients. For over 50 years, we have believed transparency is key to establishing and maintaining customer satisfaction. Whether you are in the market for a new PC or a single component, no order is too large nor too small for our dedicated staff. At Lugnutz Computer Parts, your satisfaction is our number one priority, and we encourage all of our customers (potential and returning) to reach out for honest support and recommendations, or to simply learn more about Larry's legacy!
                     </p>
                     <br>
                     <h2>
