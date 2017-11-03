@@ -59,7 +59,7 @@ class CustomersController extends Controller
      */
     public function show(Request $request, Customer $customer)
     {
-        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+        if ($request->user() && ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber)) {
             return view('customers.show', compact('customer'));
         }
         abort(403, 'You do not have access to this page');
@@ -89,7 +89,7 @@ class CustomersController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //TODO: Form validation
-        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+        if ($request->user() && ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber)) {
             $customer->update($request->all());
             return redirect()->action('CustomersController@show', [$customer]);
         }
@@ -109,7 +109,7 @@ class CustomersController extends Controller
     }
 
     public function changePassword(Request $request, Customer $customer) {
-        if ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber) {
+        if ($request->user() && ($request->user()->is_admin || $request->user()->customer->customerNumber == $customer->customerNumber)) {
             $user = $customer->user;
             if (!$user) {
             throw new Exception('no user associated with customer');
