@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Mail;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::inRandomOrder()->limit(6)->get();
+        $products = $products = Product::inRandomOrder()->limit(6)->get();
+        if (App::environment() == 'production') {
+            $products = Product::where('productLine', 'Computer Parts')->inRandomOrder()->limit(6)->get();
+        }
         return view('home', compact('products'));
     }
 
