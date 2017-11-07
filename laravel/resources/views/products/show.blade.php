@@ -72,7 +72,11 @@
     <div class="col-sm-12 grid">
     @foreach($relatedProducts as $p)
         <div class="col-sm-3" style="text-align: center;">
-            <img src="http://via.placeholder.com/150x150" alt="placeholder">
+            @if (!$p->image_url)
+                <img src="http://via.placeholder.com/150x150" alt="">
+            @else
+                <img src="{{ asset($p->image_url) }}" width="150" alt="">
+            @endif
             <br><br>
             <a href="{{ url('products/' . $p->productCode) }}" >{{ $p->productName }}</a>
             <br>
