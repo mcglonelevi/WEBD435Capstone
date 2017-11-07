@@ -58,10 +58,10 @@ class ShoppingCartController extends Controller
             abort(403, 'You must have items in your shopping cart to checkout.');
         }
 
-        $orderNumber = 0;
+        $orderNumber = 1;
 
         while (Order::find($orderNumber)) {
-          $orderNumber = mt_rand(0, 60000);
+          $orderNumber = mt_rand(1, 60000);
         }
 
         $amt = collect($shoppingList)->reduce(function ($carry, $i) {
