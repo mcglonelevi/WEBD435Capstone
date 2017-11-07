@@ -14,6 +14,11 @@
         <div class="col-sm-4 form-group">
           {{ Form::submit('Search Products', [ 'class' => 'btn btn-primary btn-md' ]) }}
         </div>
+        @if (Request::user() && Request::user()->is_admin)
+          <div class="col-sm-2">
+            <a href="{{ url('/products/create') }}" class="right btn btn-danger">Add New Product</a>
+          </div>
+        @endif
       </div>
     {!! Form::close() !!}
     <br>
