@@ -133,10 +133,8 @@
 
                         <div class="form-group">
                             <label for="postalCode" class="col-md-4 control-label">Postal Code</label>
-
                             <div class="col-md-6">
-                                <input id="postalCode" type="text" class="form-control" name="postalCode" value="{{ old('state') }}" required>
-
+                                <input id="postalCode" type="text" class="form-control" name="postalCode" value="{{ old('postalCode') }}" required>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('postalCode') }}</strong>
