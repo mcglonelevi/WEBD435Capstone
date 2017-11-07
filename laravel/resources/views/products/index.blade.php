@@ -23,7 +23,7 @@
     {!! Form::close() !!}
     <br>
     <div>
-        {{ $products->links() }}
+        {{ $products->appends(Request::all())->links() }}
     </div>
     <div class="container product-display">
       <table class="products-table">
@@ -59,7 +59,7 @@
       </table>
     </div>
     <div class="container">
-        {{ $products->links() }}
+        {{ $products->appends(Request::all())->links() }}
     </div>
 </div>
 @endsection
