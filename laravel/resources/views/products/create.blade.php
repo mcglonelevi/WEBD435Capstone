@@ -9,7 +9,7 @@
     {!! Form::model($product, ['route' => ['products.update', $product->productCode], 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
 @else
     <h1>Create New Product</h1>
-    {!! Form::open(['action' => 'ProductsController@store', 'method' => 'post']) !!}
+    {!! Form::open(['action' => 'ProductsController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 @endif
     <div class="form-group">
         {{ Form::label('productCode', 'Product Code', array('class' => 'control-label') ) }}
