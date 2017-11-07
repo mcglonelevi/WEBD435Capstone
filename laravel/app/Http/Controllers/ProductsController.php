@@ -56,11 +56,11 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $product = new Product($request->all());
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('public');
             $product->image_url = 'uploads/' . $path;
         }
-        $product = new Product($request->all());
         $product->save();
 
         // Redirect to show the newly created product
