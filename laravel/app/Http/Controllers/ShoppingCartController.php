@@ -40,7 +40,8 @@ class ShoppingCartController extends Controller
         $subtotal = collect($products)->reduce(function ($carry, $i) {
           return $carry + ($i['qty'] * $i['product']->buyPrice);
         }, 0);
-        return view('cart.create', compact('subtotal'));
+	$user = $request->user();
+        return view('cart.create', compact('subtotal', 'user'));
     }
 
     /**
