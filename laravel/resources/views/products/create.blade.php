@@ -48,7 +48,7 @@
         {{ Form::text('MSRP', null, array('placeholder' => '42.99', 'required' => 'required', 'class' => 'form-control') ) }}
     </div>
     <div class="form-group">
-        {{ Form::label('image', 'Image Upload') }}
+        {{ Form::label('image', 'Image Upload', ['class' => 'control-label']) }}
         {{ Form::file('image') }}
         @if (isset($product) && $product->image_url != null)
             <div class="">

@@ -29,13 +29,15 @@
             </div>
             <div class="col-sm-3">
               {!! Form::open(['url' => url('/products/' . $product->productCode . '/addtocart'), 'method' => 'get']); !!}
-                  {!! Form::label('qty', 'Quantity:') !!}
+                  {!! Form::label('qty', 'Quantity:', ['class' => 'control-label']) !!}
                   <div>
-                    {!! Form::text('text', '1', [
+                    {!! Form::number('text', '1', [
                       'name' => 'qty',
                       'style' => 'width: 150px; float: left; margin-right: 20px;',
+                      'min'   => '1',
+                      'class' => 'form-control'
                     ]); !!}
-                    {!! Form::submit('Add to Cart', ['class' => 'btn btn-success btn-sm']); !!}
+                    {!! Form::submit('Add to Cart', ['class' => 'btn btn-success btn-md']); !!}
                   </div>
               {!! Form::close(); !!}
             </div>

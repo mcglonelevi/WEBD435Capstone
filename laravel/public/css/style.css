@@ -104,7 +104,6 @@ h3 {
 /* Add vertical margins to headers */
 h1, h2, h3 {
   margin: 0.5em 0;
-  
 }
 b {
   font-weight: 700;
@@ -146,6 +145,7 @@ section h3 {
   border: 1px solid #cccccc;
   position: relative;
   top: -2px;
+  padding: 10px;
  /* -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
        box-shadow: 0 8px 6px -6px black; */
@@ -176,11 +176,21 @@ p {
 }
 .cart-table {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .cart-table td {
   text-align: center;
   vertical-align: middle;
+  padding-bottom: 15px;
+}
+
+.cart-table th {
+  font-weight: 600;
+}
+
+.cart-table td.update-qty {
+  padding-top: 15px;
 }
 
 .product-display td form {

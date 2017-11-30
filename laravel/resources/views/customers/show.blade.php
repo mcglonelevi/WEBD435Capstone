@@ -36,11 +36,11 @@
               {{ Form::text('postalCode', null, array('placeholder' => 'Postal Code', 'required' => 'required') ) }}
           </div>
           <div class="col-sm-12 form-group">
-              {{ Form::submit('Update Customer', array('class' => 'btn btn-success')) }}
+              {{ Form::submit('Update Customer', array('class' => 'btn btn-success btn-md')) }}
           </div>
       </div>
     {!! Form::close() !!}
-
+    <br>
     @if ($customer->user)
         {!! Form::model($customer, ['route' => ['customers.changePassword', $customer->customerNumber], 'method' => 'put']) !!}
             <div class="grid">
@@ -48,28 +48,30 @@
                   {{ Form::label('currentPassword', 'Current Password') }}
                   {{ Form::text('currentPassword', null, array('required' => 'required') ) }}
               </div>
+              <div class="col-sm-6 form-group"></div>
               <div class="col-sm-6 form-group">
                   {{ Form::label('password', 'New Password') }}
                   {{ Form::text('password', null, array('required' => 'required') ) }}
               </div>
-              <div class="col-sm-6 form-group"></div>
               <div class="col-sm-6 form-group">
                   {{ Form::label('password_confirmation', 'New Password Confirm') }}
                   {{ Form::text('password_confirmation', null, array('required' => 'required') ) }}
               </div>
               <div class="col-sm-12 form-group">
-                  {{ Form::submit('Update Password') }}
+                  {{ Form::submit('Update Password', ['class' => 'btn btn-primary btn-md']) }}
               </div>
           </div>
         {!! Form::close() !!}
     @else
         <div class="grid">
             <div class="col-sm-12 form-group">
+              <div class="alert alert-danger">
                 There is no user login information associated with this account.
+              </div>
             </div>
         </div>
     @endif
-
+    <br>
     <h2>Recent Order History</h2>
       <div class="grid">
         <div class="col-sm-12">
@@ -77,7 +79,11 @@
             <div>
               <h3>
                 {{$o->orderDate}} -
-                #{{$o->orderNumber}} -
+                @if (Request::user() && Request::user()->is_admin)
+                  <a href="{{ route('orders.show', [$o]) }}">#{{$o->orderNumber}}</a> -
+                @else
+                  #{{$o->orderNumber}} -
+                @endif
                 ${{$o->getTotal()}} -
                 {{$o->status}}
               </h3>

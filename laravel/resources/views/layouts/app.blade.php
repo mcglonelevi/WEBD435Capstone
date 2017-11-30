@@ -78,7 +78,7 @@
                       <li><a href="{{ url('/customers/' . Request::user()->customerNumber) }}" title="View Profile">Profile</a></li>
                   @else
                       <li><a href="{{ url('/') }}" title="Home" >Home</a>
-                        <li><a href="{{ url('/products') }}" title="View Products">Products</a></li>
+                      <li><a href="{{ url('/products') }}" title="View Products">Products</a></li>
                       <li><a href="{{ url('/about') }}" title="About Us">About</a>
                       <li><a href="{{ url('/locations') }}" title="Store Locations">Store</a>
                       <li><a href="{{ url('/contact') }}" title="Contact Us" >Contact Us</a>

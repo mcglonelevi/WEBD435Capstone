@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Products</h1>
+    <h1>Shopping Cart</h1>
     <div class="container product-display">
       @if (count($products) > 0)
       <table class="cart-table">
@@ -14,6 +14,7 @@
             <th>Quantity</th>
             <th>Actions</th>
           </tr>
+          <tr style="height: 15px;"><!-- Empty row for vertical spacing row --></tr>
         </thead>
         <tbody>
           @foreach($products as $p)
@@ -44,15 +45,16 @@
                   </div>
                 </td>
                 <td>
-                  <a class="btn btn-danger" href="{{ url('/products/' . $p['product']->productCode . '/removefromcart') }}">Remove from Cart</a>
+                  <a class="btn btn-danger btn-md" href="{{ url('/products/' . $p['product']->productCode . '/removefromcart') }}">Remove from Cart</a>
                 </td>
             </tr>
           @endforeach
         </tbody>
       </table>
       <div>
-          Subtotal: ${{number_format($subtotal, 2)}}
+          <b>Subtotal: ${{number_format($subtotal, 2)}}</b>
       </div>
+      <br>
       <div class="grid">
           <a href="/cart/create" class="btn btn-success">Checkout</a>
       </div>
