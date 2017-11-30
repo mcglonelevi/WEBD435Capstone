@@ -104,7 +104,7 @@ h3 {
 /* Add vertical margins to headers */
 h1, h2, h3 {
   margin: 0.5em 0;
-  
+
 }
 b {
   font-weight: 700;
@@ -253,4 +253,8 @@ p {
 .products-table .add-cart:hover {
   filter: brightness(85%);
   cursor: pointer;
+}
+
+#page-wrapper {
+  min-height: calc(100vh - 190px);
 }

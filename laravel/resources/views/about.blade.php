@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <section class="static-content-width">
+    <section>
         <article>
             <div class="grid">
                 <div class="col-sm-12 about-us">
                     <h2>Our History</h2>
                     <p>
-                        Lugnutz Computer Parts has been a family-owned business for over 50 years. Founded by Larry Lugnut in 1965, Larry sought to establish a consumer electronics company focused on building quality relationships with its customers. Larry's devotion to customer satisfaction helped Lugnutz Computer Parts develop into a regional success story, and his vision is now being carried on by his granddaughter and current CEO, Patty Lugnut. 
+                        Lugnutz Computer Parts has been a family-owned business for over 50 years. Founded by Larry Lugnut in 1965, Larry sought to establish a consumer electronics company focused on building quality relationships with its customers. Larry's devotion to customer satisfaction helped Lugnutz Computer Parts develop into a regional success story, and his vision is now being carried on by his granddaughter and current CEO, Patty Lugnut.
                     </p>
                     <h2>Our Mission</h2>
                     <p>
